@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html {
+    height: 100%;
+    font-family: 'Courier New';
+}
+
+body {
+    height: inherit;
+    background-color: #061417;
+    color: #d3eef3;
+}
+
+a {
+    color: #061417;
+    background-color: #d3eef3;
+}
+
+a:hover {
+    background-color: #223f1d;
+    color: #fff;
+}
+
+nav {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+article {
+    padding: 50px;
+    text-transform: lowercase;
+    font-size: x-large;
+}

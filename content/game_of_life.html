@@ -1,0 +1,209 @@
+<!doctype html>
+<style>
+  body {
+    font-family: "Courier New";
+  }
+  * {
+    font-family: inherit;
+  }
+  input[type=number] {
+    width: 40px;
+  }
+  td {
+    background: #ccc;
+    /*-webkit-transition: 1s ease;*/
+  }
+  #world {
+    margin: 0 auto;
+  }
+  .large td {
+    height: 8px;
+    width: 8px;
+  }
+  .larger td {
+    height: 16px;
+    width: 16px;
+  }
+  .live {
+    background: blue;
+  }
+  .right {
+    float: right;
+  }
+  .left {
+    float: left;
+  }
+  .ohidden {
+    overflow: hidden;
+  }
+</style>
+<body>
+  <div class="ohidden">
+    <div class="left">
+      <input type="number" value="100" min="8" max="256" id="x" /> x <input type="number" value="60" min="8" max="256" id="y" />
+      <button id="apply">apply</button>
+      <button id="random" disabled>random</button>
+      <button id="next">next</button>
+      <input type="checkbox" id="auto" /> auto
+    </div>
+    <div class="right">
+      <span id="generation">0</span>
+      <select id="size">
+        <option val="">small</option>
+        <option val="large" selected>large</option>
+        <option val="larger">larger</option>
+      </select>
+    </div>
+  </div>
+  <table id="world" class="large"></table>
+  <script>
+    window.onload = function () {
+      population = [],
+      past = {},
+      generation = 0,
+      started = false,
+      auto = false,
+      world = document.getElementById("world");
+
+      var rButton = document.getElementById("random"),
+          nButton = document.getElementById("next"),
+          aButton = document.getElementById("apply"),
+          sSelect = document.getElementById("size"),
+          aCheck = document.getElementById("auto"),
+          gSpan = document.getElementById("generation"),
+          dimX = document.getElementById("x"),
+          dimY = document.getElementById("y");
+
+      function init(w, x, y) {
+        for (var i = 0; i < y; i++) {
+          row = world.insertRow();
+          population[i] = [];
+          for (var j = 0; j < x; j++) {
+            cell = row.insertCell();
+            population[i][j] = false;
+
+            cell.addEventListener("click", function () {
+              var cellX = this.cellIndex
+              var cellY = this.parentNode.rowIndex;
+
+              var val = !population[cellY][cellX];
+              population[cellY][cellX] = val;
+              this.className = val ? "live" : "";
+            });
+          }
+        }
+        generation = 0;
+        gSpan.innerHTML = generation;
+        started = true;
+      }
+
+      function clear (w) {
+        while (w.hasChildNodes()) {
+          w.removeChild(w.firstChild);
+        }
+      }
+
+      function coin () {
+        return Math.random() >= 0.5 ? true : false;
+      }  
+
+      function next () {
+        var y = population.length;
+        var x = population[0].length;
+        var new_population = [];
+
+        var val, neighbours;
+
+        for (var i = 0; i < y; i++) {
+          new_population[i] = [];
+
+          for (var j = 0; j < x; j++) {
+
+            val = population[i][j];
+            neighbours = val ? -1 : 0;
+
+            if (val) {
+              console.log(x);
+              console.log(y);
+            }
+            for (var f = i - 1; f <= i + 1; f++) {
+              for (var g = j - 1; g <= j + 1; g++) {
+                try {
+                  if (population[f][g]) neighbours++;
+                }
+                catch (e) {}
+              }
+            }
+
+            if (val && ((neighbours < 2) || (neighbours > 3))) {
+              world.rows[i].cells[j].className = "";
+              new_population[i][j] = false;
+            } else if ((val && neighbours <= 3) || (!val && neighbours === 3)) {
+              world.rows[i].cells[j].className = "live";
+              new_population[i][j] = true;
+            } else {
+              new_population[i][j] = false;
+            }
+          }
+        }
+        population = new_population;
+          
+        gSpan.innerHTML = ++generation;
+
+        started = true;
+      }
+
+      function random (w) {
+        var x = w.rows[0].cells.length;
+            y = w.rows.length;
+
+        var row, cell;
+        var live;
+
+        for (var i = 0; i < y; i++) {
+          for (var j = 0; j < x; j++) {
+            live = coin();
+            w.rows[i].cells[j].className = live ? "live" : "";
+            population[i][j] = live;
+          }
+        }
+        started = true;
+      }
+
+      aButton.addEventListener("click", function () {
+        clear(world);
+        init(world, dimX.value, dimY.value);
+      });
+
+      rButton.addEventListener("click", function () {
+        random(world);
+      });
+
+      nButton.addEventListener("click", next);
+
+      sSelect.addEventListener("change", function () {
+        world.className = this.value;
+      });
+
+      aCheck.addEventListener("change", function () {
+        auto = this.checked;
+        nButton.disabled = this.checked;
+        rButton.disabled = this.checked;
+        aButton.disabled = this.checked;
+        dimX.disabled = this.checked;
+        dimY.disabled = this.checked;
+      });
+
+
+      init(world, dimX.value, dimY.value);
+      rButton.disabled = false;
+
+      setInterval(function () {
+        if (started && auto) {
+          next();
+        }
+      }, 40);
+    };
+
+  </script>
+</body>
