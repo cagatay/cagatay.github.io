@@ -1,0 +1,78 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>cagatay.co.uk</title>
+	<meta name="description" content="">
+	<meta name="author" content="Cagatay Yuksel">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="/media/css/style.css">
+
+	<!--<script src="/media/js/libs/modernizr-2.0.6.js"></script>-->
+</head>
+<body>
+
+<div id="container">
+	<header class="clearfix">
+    <nav id="menu">
+    </nav>
+    <div id="profile">
+      <a href="/" id="logo"></a>
+      <ul id="profile_links">
+        <li>
+          <a href="http://plus.google.com/100630473385184587136/" class="profile_link plus">Google+</a>
+        </li>
+        <li>
+          <a href="http://tr.linkedin.com/pub/cagatay-yuksel/25/4a6/275" class="profile_link linkedin">LinkedIn</a>
+        </li>
+        <li>
+          <a href="http://github.com/cagatayyuksel" class="profile_link github">github</a>
+        </li>
+        <li>
+          <a href="http://www.facebook.com/a.cagatay.yuksel" class="profile_link fb">Facebook</a>
+        </li>
+        <li>
+          <a href="http://www.last.fm/user/cagatayyuksel" class="profile_link lastfm">last.fm</a>
+        </li>
+        <li>
+          <a href="https://docs.google.com/viewer?srcid=0B8U5xHxzhEGyZDc3MTNmNzItYmE2Yy00NDRkLWJiYmEtM2ZiNWZhNTgyNWE2" class="profile_link docs">CV</a>
+        </li>
+      </ul>
+    </div>
+
+	</header>
+	<div id="main" role="main">
+    {% block main %}{% endblock %}
+	</div>
+	<footer>
+
+	</footer>
+</div> <!--! end of #container -->
+
+
+<!-- scripts concatenated and minified via ant build script-->
+<script src="/media/js/plugins.js"></script>
+<script src="/media/js/script.js"></script>
+<!-- end scripts-->
+
+<script>
+	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<!--[if lt IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>

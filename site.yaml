@@ -1,11 +1,10 @@
 mode: learning
 media_root: media
-media_url: /media # will use relative path, prepend "/" for absolute path
+media_url: /media/ # will use relative path, prepend "/" for absolute path
 template: hyde.ext.templates.jinja.Jinja2Template
 plugins:
     - hyde.ext.plugins.meta.MetaPlugin
     - hyde.ext.plugins.auto_extend.AutoExtendPlugin
-    - hyde.ext.plugins.syntext.SyntextPlugin
 context:
     data:
         author:
@@ -14,10 +13,3 @@ context:
         project:
             name: cagataycouk
             url: "http://cagatay.co.uk"
-        #menu:
-          #- title: Home
-            #url: index.html
-          #- title: What next
-            #url: what-next.html
-          #- title: About
-            #url: about.html
