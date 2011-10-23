@@ -200,6 +200,22 @@ table { border-collapse: collapse; border-spacing: 0; }
    Primary styles
    Author: cagatay 
    ========================================================================== */
+@-webkit-keyframes profile_image {
+        0%   { background-position: 0 -80px; }
+        100% { background-position: 0 0; }
+}
+@-moz-keyframes profile_image {
+        0%   { background-position: 0 -80px; }
+        100% { background-position: 0 0; }
+}
+@-ms-keyframes profile_image {
+        0%   { background-position: 0 -80px; }
+        100% { background-position: 0 0; }
+}
+@-webkit-keyframes spin {
+      from { -webkit-transform: rotateY(0); }
+      to   { -webkit-transform: rotateY(360deg); }
+}
 #container {
   width: 960px;
   margin: 0 auto;
@@ -235,13 +251,19 @@ header {
   background: -o-linear-gradient(#f7f7f7, #dadada);
   background: -ms-linear-gradient(#f7f7f7, #dadada);
   background: linear-gradient(#f7f7f7, #dadada);
-  /*cursor: pointer;*/
+  /*-webkit-perspective: 70;*/
 }
 #logo {
   display: block;
   width: 80px;
   height: 80px;
   background: url(http://www.gravatar.com/avatar/f5afe6ededf0cc34ece68701c97c040f.png);
+  -webkit-animation: profile_image 1s infinite linear;
+  -moz-animation: profile_image 1s infinite linear;
+  -ms-animation: profile_image 1s infinite linear;
+  /*-webkit-animation: spin 1s infinite linear;*/
+}
+#profile:hover #logo {
 }
 #profile_links {
   height: 0;
@@ -250,10 +272,10 @@ header {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  -moz-transition: 0.5s ease;
-  -webkit-transition: 0.5s ease;
-  -o-transition: 0.5s ease;
-  -ms-transition: 0.5s ease;
+  -moz-transition: .5s ease;
+  -webkit-transition: .5s ease;
+  -o-transition: .5s ease;
+  -ms-transition: .5s ease;
 }
 #profile:hover #profile_links {
   height: 100px;
