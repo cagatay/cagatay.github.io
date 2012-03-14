@@ -2,6 +2,8 @@ mode: learning
 media_root: media
 media_url: /media/ # will use relative path, prepend "/" for absolute path
 template: hyde.ext.templates.jinja.Jinja2Template
+meta:
+    nodemeta: meta.yaml
 plugins:
     - hyde.ext.plugins.meta.MetaPlugin
     - hyde.ext.plugins.auto_extend.AutoExtendPlugin
