@@ -236,15 +236,12 @@ header {
   background: -o-linear-gradient(#f7f7f7, #dadada);
   background: -ms-linear-gradient(#f7f7f7, #dadada);
   background: linear-gradient(#f7f7f7, #dadada);
-  /*-webkit-perspective: 70;*/
 }
 #logo {
   display: block;
   width: 80px;
   height: 80px;
   background: url(http://www.gravatar.com/avatar/f5afe6ededf0cc34ece68701c97c040f.png);
-}
-#profile:hover #logo {
 }
 #profile_links {
   height: 0;
@@ -253,16 +250,18 @@ header {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  -moz-transition: .5s ease;
-  -webkit-transition: .5s ease;
-  -o-transition: .5s ease;
-  -ms-transition: .5s ease;
+  transition: height .5s ease;
+  -moz-transition: height .5s ease;
+  -webkit-transition: height .5s ease;
+  -o-transition: height .5s ease;
+  -ms-transition: height .5s ease;
 }
 #profile:hover #profile_links {
-  height: 100px;
-  padding: 10px 0;
+  height: 110px;
 }
 #profile_links a {
+  padding: 3px 0 0 20px;
+  background-repeat: no-repeat;
   font-size: 11px;
   color: #aaa;
   text-decoration: none;
@@ -271,12 +270,8 @@ header {
   text-decoration: underline;
   color: #000;
 }
-#profile_links li:last-child {
+#profile_links li {
   margin-top: 5px;
-}
-.profile_link {
-  padding-left: 20px;
-  background-repeat: no-repeat;
 }
 .plus {
   background-image: url(/media/images/plus.png);
@@ -297,85 +292,6 @@ header {
   background-image: url(/media/images/docs.png);
 }
 
-/* pi stuff */
-
-@-webkit-keyframes pi-radius {
-  0%  { border-radius: 0; }
-  50% { border-radius: 50px; }
-  100% { border-radius: 0; }
-}
-@-webkit-keyframes pi-rotate {
-  0% {
-    -webkit-transform: rotate(0deg) scale(1, 1);
-  }
-  50% {
-    -webkit-transform: rotate(360deg) scale(0, 0);
-  }
-  100% {
-    -webkit-transform: rotate(0deg) scale(1, 1);
-  }
-}
-@-webkit-keyframes pi-spacing {
-  0%   { -webkit-transform: scale(1, 1); }
-  50%   { -webkit-transform: scale(0, 0); }
-  100%   { -webkit-transform: scale(1, 1); }
-}
-@-webkit-keyframes particle-size { from { background-size: 6px 6px, 12px 12px; } to { background-size: 12px 12px, 24px 24px; } }
-@-webkit-keyframes particle-positon { from { background-position: 60px, 60px; } to { background-position: 140px, 140px; } }
-@-webkit-keyframes jelly {
-  from { background-size:  60px  60px,  24px  24px; }
-  50%  { background-size: 120px 120px, 100px 100px; }
-  to   { background-size:  24px  24px, 140px 140px; }
-}
-@-moz-keyframes pi-radius {
-  0%   { border-radius: 0; }
-  50% { border-radius: 50px; }
-  100%   { border-radius: 0; }
-}
-@-ms-keyframes pi-radius {
-  0%   { border-radius: 0; }
-  50% { border-radius: 50px; }
-  100%   { border-radius: 0; }
-}
-@-webkit-keyframes pi-background {
-    from { background-size:  20px  20px; }
-    to   { background-size: 100px 100px; }
-}
-#pi {
-  margin: auto;
-  border-collapse: separate;
-  border-spacing: 10px 10px;
-  /*-webkit-animation: pi-rotate 10s infinite;*/
-  /*font: normal 216px/1 Inconsolata, sans-serif;*/
-  /*text-align: center;*/
-}
-#pi td {
-  font: normal 20px/1 Inconsolata, sans-serif;
-  color: #fff;
-  width: 80px;
-  height: 80px;
-  background-color: #243F6A;
-  border-radius: 50px;
-  box-shadow: 2px 5px 5px #222;
-  -webkit-transition: background-color 1s linear;
-  -moz-transition: background-color 1s linear;
-  -o-transition: background-color 1s linear;
-  -ms-transition: background-color 1s linear;
-  transition: background-color 1s linear;
-  /*-webkit-animation: pi-radius 2s infinite;*/
-  -moz-animation: pi-radius 2s infinite;
-  -ms-animation: pi-radius 2s infinite;
-}
-body {
-  background-size: 12px 12px;
-  /*background-color: hsla(320,80%,60%,1);*/
-  /*background-image:     -webkit-repeating-radial-gradient( hsla(320,100%,60%,.6) 0px, hsla(220,100%,60%,0) 60%),*/
-              /*-webkit-repeating-radial-gradient( hsla(330,100%,40%,1) 12%, hsla(320,80%,60%,1) 24px);*/
-  /*background-size: 60px 60px;*/
-  background-image: -webkit-radial-gradient( #555 0px, transparent 2px, transparent 24px), -webkit-repeating-radial-gradient( white 0px, black 2px, black 48px);
-  -webkit-animation: particle-size .24s linear infinite, particle-positon .48s linear infinite alternate;
-  /*-webkit-animation: jelly 1.4s cubic-bezier(.1,.4,.9,.6) infinite;*/
-}
 
 /* =============================================================================
    Non-semantic helper classes
