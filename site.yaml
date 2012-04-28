@@ -10,8 +10,11 @@ plugins:
 context:
     data:
         author:
-            name: cagatay
-            url: "http://cagatay.co.uk"
+            name: Cagatay Yuksel
+            url: 'http://cagatay.co.uk'
+        description: 'cagatay/home'
+        keywords: 'programming'
         project:
             name: cagataycouk
-            url: "http://cagatay.co.uk"
+            url: 'http://cagatay.co.uk'
+        analytics: 'UA-26494430-1'

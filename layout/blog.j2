@@ -1,0 +1,19 @@
+{% extends 'base.j2' %}
+{% block title %}{{ resource.meta.title }}{% endblock %}
+{% block keywords %}{{ resource.meta.keywords|join(',') }}{% endblock %}
+{% block content %}
+<section>
+  <article>
+    <header>
+      <h1>{{ resource.meta.title }}</h1>
+      <p>
+        <time datetime="{{ resource.meta.created.strftime('%Y-%m-%d') }}">
+          {{ resource.meta.created.strftime('%B %d, %Y') }}
+        </time>
+      </p>
+    </header>
+    {% block article %}
+    {% endblock %}
+  </article>
+</section>
+{% endblock %}
