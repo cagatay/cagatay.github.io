@@ -15,11 +15,14 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:700,400' rel='stylesheet' type='text/css'>
+  {% block additional_links %}{% endblock %}
 	<link rel="stylesheet" href="/media/css/style.css">
+  {% block additional_style %}{% endblock %}
 
 	<!--<script src="/media/js/libs/modernizr-2.0.6.js"></script>-->
 </head>
 <body>
+{% block page %}
 <div id="container">
 	<header id="page_header" class="clearfix">
     <nav id="menu">
@@ -57,9 +60,11 @@
 
 	</footer>
 </div> <!--! end of #container -->
-
+{% endblock %}
 
 <!-- scripts concatenated and minified via ant build script-->
+<script src="/media/js/mootools-core-1.4.5-full-nocompat-yc.js"></script>
+<script src="/media/js/mootools-more-1.4.0.1.js"></script>
 <script src="/media/js/script.js"></script>
 <!-- end scripts-->
 
@@ -74,6 +79,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
 	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
 <![endif]-->
-
+{% block additional_scripts %}{% endblock %}
 </body>
 </html>

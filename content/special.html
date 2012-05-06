@@ -1,0 +1,83 @@
+{% extends 'base.j2' %}
+{% block title %}5 years with the princess{% endblock %}
+{% block additional_links %}
+  <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block additional_style %}
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+    }
+    #anniversary {
+      width: 800px;
+      margin: auto;
+    }
+    #counter {
+      margin-top: 50px;
+      text-align: center;
+    }
+    #counter div {
+      float: left;
+      font-size: 36px;
+    }
+    #counter div:not(:last-child):after {
+      content: '.';
+    }
+    #animation {
+      text-align: center;
+    }
+  </style>
+{% endblock %}
+{% block page %}
+  <div id="anniversary" class="clearfix">
+    <div id="counter" class="clearfix">
+      <div id="year">5</div>
+      <div id="month">5</div>
+      <div id="day">5</div>
+      <div id="hour">5</div>
+      <div id="minute">5</div>
+      <div id="second">5</div>
+      <div id="milisecond">5</div>
+    </div>
+    <div id="animation">
+      <img src="/media/images/us.gif" width="400px" height="400px"/>
+    </div>
+  </div>
+{% endblock %}
+{% block additional_scripts %}
+<script>
+  var eYear = document.id('year');
+  var eMonth = document.id('month');
+  var eDay = document.id('day');
+  var eHour = document.id('hour');
+  var eMinute = document.id('minute');
+  var eSecond = document.id('second');
+  var eMilisecond = document.id('milisecond');
+  setInterval(function () {
+      var beginningOfTime = new Date(2007, 4, 7);
+      var now = new Date();
+      var diffYear = beginningOfTime.diff(now, 'year');
+      var plusDiffYear = beginningOfTime.clone().increment('year', diffYear);
+      var diffMonth = plusDiffYear.diff(now, 'month');
+      var plusDiffMonth = plusDiffYear.clone().increment('month', diffMonth);
+      var diffDay = plusDiffMonth.diff(now, 'day');
+      var plusDiffDay = plusDiffMonth.clone().increment('day', diffDay);
+      var diffHour = plusDiffDay.diff(now, 'hour') - 1;
+      var plusDiffHour = plusDiffDay.clone().increment('hour', diffHour);
+      var diffMinute = plusDiffHour.diff(now, 'minute') - 1;
+      var plusDiffMinute = plusDiffHour.clone().increment('minute', diffMinute);
+      var diffSecond = plusDiffMinute.diff(now, 'second') - 1;
+      var plusDiffSecond = plusDiffMinute.clone().increment('second', diffSecond);
+      var diffMilisecond = plusDiffSecond.diff(now, 'ms') - 1;
+
+      eYear.set('text', new String(diffYear).pad(3, '0', 'left'));
+      eMonth.set('text', new String(diffMonth).pad(2, '0', 'left'));
+      eDay.set('text', new String(diffDay).pad(2, '0', 'left'));
+      eHour.set('text', new String(diffHour).pad(2, '0', 'left'));
+      eMinute.set('text', new String(diffMinute % 60).pad(2, '0', 'left'));
+      eSecond.set('text', new String(Math.abs(diffSecond) % 60).pad(2, '0', 'left'));
+      eMilisecond.set('text', new String(Math.abs(diffMilisecond) % 1000).pad(3, '0', 'left'));
+  }, 1);
+
+</script>
+{% endblock %}
