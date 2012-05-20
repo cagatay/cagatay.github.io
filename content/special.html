@@ -26,6 +26,9 @@
     #animation {
       text-align: center;
     }
+    #lyrics {
+      text-align: center;
+    }
   </style>
 {% endblock %}
 {% block page %}
@@ -42,10 +45,35 @@
     <div id="animation">
       <img src="/media/images/us.gif" width="400px" height="400px"/>
     </div>
+    <div id="lyrics">
+    </div>
   </div>
+  <audio autoplay loop preload="auto" id="wol">
+    <source src="/media/snd/wol.ogg" type="audio/ogg"></source>
+    <source src="/media/snd/wol.wav"></source>
+  </audio>
 {% endblock %}
 {% block additional_scripts %}
 <script>
+  var eAudio = document.id('wol');
+  var eLyrics = document.id('lyrics');
+  var lyrics = {
+    '15': 'Hold me close and tell me how you feel',
+    '22': 'Tell me love is real',
+    '31': 'Words of love you whisper soft and true',
+    '38': 'Darling I love you',
+    '79': 'Let me hear you say the words I long to hear',
+    '86': 'Darling when youre near',
+    '94': 'Words of love you whisper soft and true',
+    '101': 'Darling I love you',
+    '113': ''
+  };
+  eAudio.addEventListener('timeupdate', function () {
+      var current = lyrics[Math.floor(this.currentTime)];
+      if (typeof(current) !== 'undefined') {
+        eLyrics.set('text', lyrics[Math.floor(this.currentTime)]);
+      }
+  });
   var eYear = document.id('year');
   var eMonth = document.id('month');
   var eDay = document.id('day');
@@ -61,22 +89,18 @@
       var diffMonth = plusDiffYear.diff(now, 'month');
       var plusDiffMonth = plusDiffYear.clone().increment('month', diffMonth);
       var diffDay = plusDiffMonth.diff(now, 'day');
-      var plusDiffDay = plusDiffMonth.clone().increment('day', diffDay);
-      var diffHour = plusDiffDay.diff(now, 'hour') - 1;
-      var plusDiffHour = plusDiffDay.clone().increment('hour', diffHour);
-      var diffMinute = plusDiffHour.diff(now, 'minute') - 1;
-      var plusDiffMinute = plusDiffHour.clone().increment('minute', diffMinute);
-      var diffSecond = plusDiffMinute.diff(now, 'second') - 1;
-      var plusDiffSecond = plusDiffMinute.clone().increment('second', diffSecond);
-      var diffMilisecond = plusDiffSecond.diff(now, 'ms') - 1;
+      var hour = now.get('hours');
+      var minute = now.get('minutes');
+      var second = now.get('seconds');
+      var milisecond = now.get('ms');
 
       eYear.set('text', new String(diffYear).pad(3, '0', 'left'));
       eMonth.set('text', new String(diffMonth).pad(2, '0', 'left'));
       eDay.set('text', new String(diffDay).pad(2, '0', 'left'));
-      eHour.set('text', new String(diffHour).pad(2, '0', 'left'));
-      eMinute.set('text', new String(diffMinute % 60).pad(2, '0', 'left'));
-      eSecond.set('text', new String(Math.abs(diffSecond) % 60).pad(2, '0', 'left'));
-      eMilisecond.set('text', new String(Math.abs(diffMilisecond) % 1000).pad(3, '0', 'left'));
+      eHour.set('text', new String(hour).pad(2, '0', 'left'));
+      eMinute.set('text', new String(minute).pad(2, '0', 'left'));
+      eSecond.set('text', new String(second).pad(2, '0', 'left'));
+      eMilisecond.set('text', new String(milisecond).pad(3, '0', 'left'));
   }, 1);
 
 </script>
