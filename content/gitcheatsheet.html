@@ -1204,7 +1204,11 @@ pre .tex .formula {
           <p>
           Press ESC to see all slides
           <p>
-          Browser's Back works to get to the previous slide
+          Back/Forward work as expected
+          <p>
+          Works in iOS
+          <p>
+          You can also save this as a single html file for offline use (But you won't have this cool font)
 				</section>
 				<section data-state='clone'>
 					<h2>CLONING THE PROJECT</h2>
@@ -1303,6 +1307,9 @@ pre .tex .formula {
 						<h1>REBASING</h1>
             <h2>Stand behind your commits</h2>
 					</section>
+					<section data-state="gitcheckout">
+						<h2>SWITCH TO YOUR BRANCH</h2>
+					</section>
 					<section data-state="gitfetch">
 						<h2>FETCH</h2>
             <p>It's been a long time
@@ -1343,7 +1350,7 @@ pre .tex .formula {
 					<section data-state="rebasecontinue">
 						<h2>CONTINUE TO REBASE</h2>
             <p>Conflicts again? <a href="#/8/2">Come with me</a>
-            <p>Seems alright? <a href="#/7/3">Come with me</a>
+            <p>Seems alright? <a href="#/7/4">Come with me</a>
 					</section>
 				</section>
 
@@ -1629,6 +1636,10 @@ var commands = {
     'rebaseconflicts': {
         'prompt': "vim alice/alice/protected/themes/local/views/cart/index.php",
         'result': ["vim rulezz"],
+    },
+    'gitcheckout': {
+        'prompt': "git checkout TURPAR-1337",
+        'result': ["Switched to branch 'TURPAR-1337'"],
     },
     'rebaseadd': {
         'prompt': "git add alice/alice/protected/themes/local/views/cart/index.php",

@@ -35,7 +35,6 @@
   <div id="anniversary" class="clearfix">
     <div id="counter" class="clearfix">
       <div id="year">5</div>
-      <div id="month">5</div>
       <div id="day">5</div>
       <div id="hour">5</div>
       <div id="minute">5</div>
@@ -75,7 +74,6 @@
       }
   });
   var eYear = document.id('year');
-  var eMonth = document.id('month');
   var eDay = document.id('day');
   var eHour = document.id('hour');
   var eMinute = document.id('minute');
@@ -86,17 +84,14 @@
       var now = new Date();
       var diffYear = beginningOfTime.diff(now, 'year');
       var plusDiffYear = beginningOfTime.clone().increment('year', diffYear);
-      var diffMonth = plusDiffYear.diff(now, 'month');
-      var plusDiffMonth = plusDiffYear.clone().increment('month', diffMonth);
-      var diffDay = plusDiffMonth.diff(now, 'day');
+      var diffDay = plusDiffYear.diff(now, 'day');
       var hour = now.get('hours');
       var minute = now.get('minutes');
       var second = now.get('seconds');
       var milisecond = now.get('ms');
 
       eYear.set('text', new String(diffYear).pad(3, '0', 'left'));
-      eMonth.set('text', new String(diffMonth).pad(2, '0', 'left'));
-      eDay.set('text', new String(diffDay).pad(2, '0', 'left'));
+      eDay.set('text', new String(diffDay).pad(3, '0', 'left'));
       eHour.set('text', new String(hour).pad(2, '0', 'left'));
       eMinute.set('text', new String(minute).pad(2, '0', 'left'));
       eSecond.set('text', new String(second).pad(2, '0', 'left'));
